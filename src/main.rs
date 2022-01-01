@@ -18,7 +18,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // - in real-world applications, we may want to set an `Arc<AtomicBool>>` (boolean that is
     // shared between threads) in the signal handler, and in hot loops, or when waiting on a
     // thread, perform a periodic check of this value and break if it is ever true
-    let signal_handler = move || { println!("received Ctrl+C!") };
+    let signal_handler = move || println!("received Ctrl+C!");
     ctrlc::set_handler(signal_handler).expect("Error setting Ctrl-C handler");
     // this allow me to send a ctrl-c signal
     thread::sleep(Duration::from_secs(2));
